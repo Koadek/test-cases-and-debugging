@@ -1,9 +1,9 @@
-let verifyEquals = require('./verify-equals.js');
+let verifyEquals = require("./verify-equals.js");
 
 // we need 7 test cases. I've provided 2.
-let inputs = [[2, 4], [-3, 3]];
+let inputs = [[2, 4], [-3, 3], [1, 2, 3], [-4, -10], [4], [], ["salut", 14]];
 
-let outputs = [6, 0];
+let outputs = [6, 0, undefined, -14, undefined, undefined, undefined];
 
 /*
   This function expects an array of 2 numbers as input (e.g. [1,2])
@@ -11,11 +11,22 @@ let outputs = [6, 0];
   If anything other than an array with 2 numbers is passed, return undefined.
   You can use the typeof function to check the type of each element (e.g. typeof 3 returns 'number')
 */
-function f(input) {}
+function f(input) {
+  let res = input.every(e => {
+    return typeof e === "number";
+  });
+  if (res !== true) {
+    return undefined;
+  } else if (input.length !== 2) {
+    return undefined;
+  }
+  let sum = input.reduce((acc, cur) => acc + cur);
+  return sum;
+}
 
 //This function runs a test. You do not need to change any code under here
 function runTest(i) {
-  if (i >= inputs.length) throw new Error('You do not have enough test cases');
+  if (i >= inputs.length) throw new Error("You do not have enough test cases");
   let expected = outputs[i];
   let actual = f(inputs[i]);
   verifyEquals(expected, actual);
@@ -28,4 +39,4 @@ runTest(3);
 runTest(4);
 runTest(5);
 runTest(6);
-console.log('All tests passed for ' + __filename);
+console.log("All tests passed for " + __filename);
