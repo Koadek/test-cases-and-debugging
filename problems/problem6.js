@@ -1,10 +1,17 @@
 // pro tip: use nodemon instead of node
-let verifyEquals = require('./verify-equals.js');
+let verifyEquals = require("./verify-equals.js");
 
 // we need 6 test cases.
-let inputs = [['add', 10, 20], ['chair', 20, 10]];
+let inputs = [
+  ["add", 10, 20],
+  ["chair", 20, 10],
+  ["mult", 2, 3],
+  ["spoof", 10, 10],
+  ["sub", 4, 20],
+  [14, 3, 4]
+];
 
-let outputs = [30];
+let outputs = [30, undefined, 6, undefined, -16, undefined];
 
 /*
 The function takes an array. The array has 3 elements. The first element of the array is a string that represents an operation.
@@ -16,11 +23,20 @@ f(["mult", 2, 3]); // 6
 f(["spoof", 10, 10]); // undefined
 
 */
-function f(arr) {}
+function f(arr) {
+  if (arr[0] === "add") {
+    return arr[1] + arr[2];
+  } else if (arr[0] === "sub") {
+    return arr[1] - arr[2];
+  } else if (arr[0] === "mult") {
+    return arr[1] * arr[2];
+  }
+  return undefined;
+}
 
 //This function runs a test. You do not need to change any code under here
 function runTest(i) {
-  if (i >= inputs.length) throw new Error('You do not have enough test cases');
+  if (i >= inputs.length) throw new Error("You do not have enough test cases");
   let expected = outputs[i];
   let actual = f(inputs[i]);
   verifyEquals(expected, actual);
@@ -32,4 +48,4 @@ runTest(2);
 runTest(3);
 runTest(4);
 runTest(5);
-console.log('All tests passed for ' + __filename);
+console.log("All tests passed for " + __filename);
