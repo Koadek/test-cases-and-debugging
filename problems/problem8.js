@@ -20,7 +20,7 @@ function f(str) {
   let reverse = [];
   let i;
   for (i = 0; i < str.length; i++) {
-    reverse.push(split[-1]);
+    reverse.push(split[str.length - 1 - i]);
   }
   reverse = reverse.join('');
   return reverse;

@@ -12,7 +12,7 @@ let inputs = [
 ];
 
 let outputs = [
-  'hahah',
+  'hahaha',
   '    ',
   'haahaahaa',
   undefined,
