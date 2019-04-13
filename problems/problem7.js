@@ -1,9 +1,25 @@
-let verifyEquals = require('./verify-equals.js');
+let verifyEquals = require("./verify-equals.js");
 
 // we need 7 test cases.
-let inputs = [];
+let inputs = [
+  ["ha", 3],
+  [" ", 4],
+  ["haa", 3],
+  ["ha", -1],
+  ["ha", 0],
+  [2, 2],
+  ["ha", "ha"]
+];
 
-let outputs = [];
+let outputs = [
+  "hahah",
+  "    ",
+  "haahaahaa",
+  undefined,
+  undefined,
+  undefined,
+  undefined
+];
 
 /*
 The function input is an array. The first element of the array is a string. The second is a number.
@@ -16,11 +32,20 @@ f(["foo", 3]) // "foofoofoo"
 f(["fo", 3]) // "fofofo"
 f(["foo", -1]) // ""
 */
-function f(arr) {}
+function f(arr) {
+  if (arr[1] <= 0) {
+    return undefined;
+  } else if (typeof arr[0] !== "string") {
+    return undefined;
+  } else if (typeof arr[1] !== "number") {
+    return undefined;
+  }
+  return arr[0].repeat(arr[1]);
+}
 
 //This function runs a test. You do not need to change any code under here
 function runTest(i) {
-  if (i >= inputs.length) throw new Error('You do not have enough test cases');
+  if (i >= inputs.length) throw new Error("You do not have enough test cases");
   let expected = outputs[i];
   let actual = f(inputs[i]);
   verifyEquals(expected, actual);
@@ -33,4 +58,4 @@ runTest(3);
 runTest(4);
 runTest(5);
 runTest(6);
-console.log('All tests passed for ' + __filename);
+console.log("All tests passed for " + __filename);
