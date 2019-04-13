@@ -1,9 +1,21 @@
 let verifyEquals = require('./verify-equals.js');
 
 // we need 5 test cases.
-let inputs = [];
+let inputs = [
+  ['hello'],
+  ['hello world'],
+  ['   s'],
+  ['12345'],
+  ["j'aime, beaucoup!"],
+];
 
-let outputs = [];
+let outputs = [
+  ['olleh'],
+  ['dlrow olleh'],
+  ['s   '],
+  ['54321'],
+  ["!puocuaeb ,emia'j"],
+];
 
 /*
 Make this function return the input string, reversed. For example "hello" would return "olleh" and "how are you" would return "uoy era woh".
@@ -15,7 +27,16 @@ HINTS:
  - Loop over the array of split characters in reverse order and fill the empty array by pushing each character into it
  - Convert the filled array into a string (use the join method) and return it
 */
-function f(str) {}
+function f(str) {
+  str = str.split('');
+  let reverse = [];
+  let i;
+  for (i = 0; i < str.length; i++) {
+    reverse.push(str[-1]);
+  }
+  reverse = reverse.join('');
+  return reverse;
+}
 
 //This function runs a test. You do not need to change any code under here
 function runTest(i) {

@@ -12,16 +12,10 @@ let outputs = [6, 0, undefined, -14, undefined, undefined, undefined];
   You can use the typeof function to check the type of each element (e.g. typeof 3 returns 'number')
 */
 function f(input) {
-  let res = input.every(e => {
-    return typeof e === "number";
-  });
-  if (res !== true) {
-    return undefined;
-  } else if (input.length !== 2) {
-    return undefined;
+  if (input.length === 2 && input.every(val => typeof val === "number")) {
+    return input.reduce((acc, curr) => acc + curr, 0);
   }
-  let sum = input.reduce((acc, cur) => acc + cur);
-  return sum;
+  return undefined;
 }
 
 //This function runs a test. You do not need to change any code under here

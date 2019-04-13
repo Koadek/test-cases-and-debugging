@@ -1,7 +1,7 @@
-let verifyEquals = require("./verify-equals.js");
+let verifyEquals = require('./verify-equals.js');
 
 // we need 5 test cases.
-let inputs = [[2, 7], [2, "0"], [2], [2, "a"], [-3.5, 2]];
+let inputs = [[2, 7], [2, '0'], [2], [2, 'a'], [-3.5, 2]];
 
 let outputs = [14, undefined, undefined, undefined, -7];
 
@@ -12,20 +12,17 @@ let outputs = [14, undefined, undefined, undefined, -7];
 */
 function f(input) {
   let res = input.every(e => {
-    return typeof e === "number";
+    return typeof e === 'number';
   });
-  if (res !== true) {
-    return undefined;
-  } else if (input.length !== 2) {
-    return undefined;
+  if (input.length === 2 && res === true) {
+    return input.reduce((acc, cur) => acc * cur);
   }
-  let product = input.reduce((acc, cur) => acc * cur);
-  return product;
+  return undefined;
 }
 
 //This function runs a test. You do not need to change any code under here
 function runTest(i) {
-  if (i >= inputs.length) throw new Error("You do not have enough test cases");
+  if (i >= inputs.length) throw new Error('You do not have enough test cases');
   let expected = outputs[i];
   let actual = f(inputs[i]);
   verifyEquals(expected, actual);
@@ -36,4 +33,4 @@ runTest(1);
 runTest(2);
 runTest(3);
 runTest(4);
-console.log("All tests passed for " + __filename);
+console.log('All tests passed for ' + __filename);

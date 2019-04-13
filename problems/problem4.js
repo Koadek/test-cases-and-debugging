@@ -32,13 +32,14 @@ f(["abc", 0]); // a
 
 */
 function f(arr) {
+  let char = arr[0].charAt(arr[1]);
   function isLetter(c) {
     return c.toLowerCase() != c.toUpperCase();
   }
-  if (isLetter(arr[0].charAt(arr[1])) !== true) {
+  if (isLetter(char) !== true) {
     return undefined;
   }
-  return arr[0].charAt(arr[1]);
+  return char;
 }
 
 //This function runs a test. You do not need to change any code under here

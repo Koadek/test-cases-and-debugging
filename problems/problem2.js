@@ -7,10 +7,8 @@ let outputs = ["x", "j", undefined, "4", "g"];
 
 // Make this function return the last character of the string that is passed to it. If the string does not have a last character, return undefined
 function f(str) {
-  if ((lastChar = myString.charAt(myString.length() - 1) === "")) {
-    return undefined;
-  }
-  return (lastChar = myString.charAt(myString.length() - 1));
+  if (myString.charAt(myString.length() - 1) === "") return undefined;
+  return myString.charAt(myString.length() - 1);
 }
 
 //This function runs a test. You do not need to change any code under here
