@@ -1,9 +1,15 @@
 let verifyEquals = require('./verify-equals.js');
 
 // we need 5 test cases.
-let inputs = [];
+let inputs = [
+  'hey hello morning',
+  'salut ça qwerf',
+  '',
+  'wowowo',
+  '123 46 7890',
+];
 
-let outputs = [];
+let outputs = ['morning', 'qwerf', '', 'wowowo', '7890'];
 
 /*
 Make this function return the longest word in the input string. If the input string is empty then return an empty string.
@@ -16,7 +22,16 @@ HINTS:
    - You'll need to use the split string method
    - A for loop might be helpful
 */
-function f(str) {}
+function f(str) {
+  let strSplit = str.split(' ');
+  let longestWord = '';
+  for (var i = 0; i < strSplit.length; i++) {
+    if (strSplit[i].length >= longestWord.length) {
+      longestWord = strSplit[i];
+    }
+  }
+  return longestWord;
+}
 
 //This function runs a test. You do not need to change any code under here
 function runTest(i) {

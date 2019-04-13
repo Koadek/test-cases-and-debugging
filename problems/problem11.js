@@ -1,15 +1,23 @@
 let verifyEquals = require('./verify-equals.js');
 
 // we need 5 test cases.
-let inputs = [];
+let inputs = [[1, 2], [-1, 4, 2], [1, 'a', 4], ['', 'salut ça va?'], []];
 
-let outputs = [];
+let outputs = [3, 5, 5, 0, 0];
 
 /*
   Make this function return the sum of all the numbers in the input array.
   If any element in the array is not a number, skip it. If the array is empty, return zero.
 */
-function f(arr) {}
+function f(arr) {
+  let sum = 0;
+  for (var i = 0; i < arr.length; i++) {
+    if (typeof arr[i] === 'number') {
+      sum = sum + arr[i];
+    }
+  }
+  return sum;
+}
 
 //This function runs a test. You do not need to change any code under here
 function runTest(i) {
